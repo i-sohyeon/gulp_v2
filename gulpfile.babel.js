@@ -3,15 +3,16 @@ import gpug from "gulp-pug";
 
 const routes = {
   pug: {
-    src: "src/*.pug",
-    dest: "build"
+    src: "src/**/*.pug",
+    dest: "build/"
   }
 };
 
-export const pug = () =>
+const pug = () =>
   gulp
     .src(routes.pug.src)
     .pipe(gpug())
     .pipe(gulp.dest(routes.pug.dest));
 
-export const dev = gulp.series([pug]);
+    const assets = gulp.series([pug]);
+    export const dev = gulp.series([assets]);

@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "script": {
-    "dev": "gulp",
+    "dev": "gulp dev",
     "build": "gulp build"
   },
   "devDependencies": {
