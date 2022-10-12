@@ -3,8 +3,7 @@ import gpug from "gulp-pug";
 
 const routes = {
   pug: {
-    watch: "src/**/*.pug",
-    src: "src/**/*.pug",
+    src: "src/*.pug",
     dest: "build/"
   },
   img: {
