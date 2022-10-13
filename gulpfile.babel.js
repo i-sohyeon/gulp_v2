@@ -1,8 +1,13 @@
 import gulp from "gulp";
 import gpug from "gulp-pug";
 import ws from "gulp-webserver";
+import minCSS from "gulp-csso";
+// var csso = require('gulp-csso');
 
 const sass = require('gulp-sass')(require('sass'));
+const autoprefixer = require('gulp-autoprefixer');
+const sourcemaps = require('gulp-sourcemaps');
+
 // sass.compiler = require("node-sass");
 
 const routes = {
@@ -29,11 +34,27 @@ const pug = () =>
     .pipe(gulp.dest(routes.pug.dest));
 
 const styles = () => 
-  gulp.src(routes.scss.src)
+  gulp
+    .src(routes.scss.src)
     .pipe(sass().on("error", sass.logError))
-    .pipe(gulp.dest(routes.scss.dest));
+    .pipe(autoprefixer({
+      cascade: false
+    }))
+    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.init({largeFile: true}))
 
-const webserver = () => gulp.src("build").pipe(ws({livereload: true, open: true}));
+    .pipe(minCSS({
+      restructure: false,
+      sourceMap: true,
+      debug: true
+    }))
+
+    .pipe(gulp.dest(routes.scss.dest))
+
+const webserver = () =>
+   gulp
+    .src("build")
+    .pipe(ws({livereload: true, open: true}));
 
 const watch = () => {
   gulp.watch(routes.pug.watch, pug);
