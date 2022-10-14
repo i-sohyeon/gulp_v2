@@ -3,12 +3,12 @@ import gpug from "gulp-pug";
 import ws from "gulp-webserver";
 import minCSS from "gulp-csso";
 // var csso = require('gulp-csso');
+import bro from "gulp-bro";
+import babelify from "babelify";
 
 const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
-
-// sass.compiler = require("node-sass");
 
 const routes = {
   pug: {
@@ -24,6 +24,11 @@ const routes = {
     watch:"src/scss/**/*.scss",
     src: "src/scss/style.scss",
     dest: "build/css"
+  },
+  js: {
+    watch: "src/js/**/*.js",
+    src: "src/js/main.js",
+    dest: "build/js"
   }
 };
 
@@ -56,9 +61,23 @@ const webserver = () =>
     .src("build")
     .pipe(ws({livereload: true, open: true}));
 
+const js = () => 
+  gulp
+    .src(routes.js.src)
+    .pipe(bro({
+      transform: [
+        babelify.configure({ presets: ["@babel/preset-env"] }),
+        [ 'uglifyify', { global: true } ]
+      ]
+    }))
+    .pipe(gulp.dest(routes.js.dest));
+    
+
 const watch = () => {
   gulp.watch(routes.pug.watch, pug);
+  // gulp.watch(routes.img.src, img);
   gulp.watch(routes.scss.watch, styles);
+  gulp.watch(routes.js.watch, js);
 };
 
 //오류 생략
@@ -67,7 +86,7 @@ const watch = () => {
 //   .pipe(image())
 //   .pipe(gulp.dest(routes.img.dest));
 
-const assets = gulp.series([pug, styles]);
+const assets = gulp.series([pug, styles, js]);
 const postDev = gulp.parallel([webserver, watch]);
 //parallel 두가지 task를 병행할 수 있음
 
