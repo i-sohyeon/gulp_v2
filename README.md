@@ -63,13 +63,24 @@ $ npm install --save-dev gulp-webserver
 
 ## gulp-watch
 
-## gulp-image
+## gulp-image(생략 -> 오류발생...)
 
 ## gulp-sass
+~~~
+$ npm install sass gulp-sass --save-dev
+$ npm install --save-dev node-sass
+~~~
 
 ## gulp-autoprefixer
+* 코드의 호환성을 도와줌
+~~~
+$ npm install --save-dev gulp-autoprefixer
+~~~
 
 ## gulp-csso
+~~~
+$ npm install gulp-csso --save-dev
+~~~
 
 ## gulp-sourcemaps
 
