@@ -5,10 +5,16 @@ import minCSS from "gulp-csso";
 // var csso = require('gulp-csso');
 import bro from "gulp-bro";
 import babelify from "babelify";
+import sourcemaps from 'gulp-sourcemaps';
+// const sourcemaps = require('gulp-sourcemaps');
+import ts from "gulp-typescript";
+// const ts = require("gulp-typescript");
+
+const tsProject = ts.createProject("tsconfig.json");
 
 const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
-const sourcemaps = require('gulp-sourcemaps');
+
 
 const routes = {
   pug: {
@@ -29,7 +35,12 @@ const routes = {
     watch: "src/js/**/*.js",
     src: "src/js/main.js",
     dest: "build/js"
-  }
+  },
+  typescript: {
+    watch: "src/ts/**/*.ts",
+    src: "src/ts/index.ts",
+    dest: 'build/js',
+  },
 };
 
 const pug = () =>
@@ -71,13 +82,17 @@ const js = () =>
       ]
     }))
     .pipe(gulp.dest(routes.js.dest));
-    
+
+const typescript = () =>
+  gulp
+
 
 const watch = () => {
   gulp.watch(routes.pug.watch, pug);
   // gulp.watch(routes.img.src, img);
   gulp.watch(routes.scss.watch, styles);
   gulp.watch(routes.js.watch, js);
+  gulp.watch(routes.ts.watch, typescript);
 };
 
 //오류 생략
