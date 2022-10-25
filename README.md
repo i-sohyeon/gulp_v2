@@ -6,14 +6,25 @@
 ## mkdir gulp -> cd gulp
 * gulp라는 폴더 생성 후 해당 폴더로 진입
 
-## 
-* gulp 폴더 내에 src 생성
+## gulp 폴더 내에 src 생성
 * src폴더 : 컴파일 되길 원하는 모든 파일이 들어가는 폴더
-* src폴더 구조 이미지 (추후 추가)
+* src폴더 구조
+~~~
+-src
+  -img
+  -js
+  -partials
+  -scss
+  -templates
+.babelrc
+gulpfile.babel.js
+package-lock.json
+package.json
+README.md
+~~~
 
 ## $ npm init
 * package.json을 만드는 명령어. 새로운 프로젝트나 패키지를 만들 때 사용
-
 ~~~
 gulp를 사용하기 위해서는 gulpfile 작성이 필요함
 package.json파일 안에 하단 서식 작성 필요
@@ -44,12 +55,11 @@ package.json파일 안에 하단 서식 작성 필요
 
 
 ## Task 만들기
-
+* 모든 pug 파일을 HTML로 바꾸는 task 만들기 -> 라이브러리 사용
+* src를 이용해서 gulp는 일종의 파일의 흐름을 만든다. pipe코드는 컴파일할 수 있게 만든다.
 ~~~
 $ npm install gulp-pug -D
 ~~~
-* 모든 pug 파일을 HTML로 바꾸는 task 만들기 -> 라이브러리 사용
-* src를 이용해서 gulp는 일종의 파일의 흐름을 만든다. pipe코드는 컴파일할 수 있게 만든다.
 
 ## delete module 설치 (생략 -> 오류발생...)
 ~~~
@@ -62,6 +72,10 @@ $ npm install --save-dev gulp-webserver
 ~~~
 
 ## gulp-watch
+* 추가/삭제/변경 등을 감지
+~~~
+$ npm install gulp-watch
+~~~
 
 ## gulp-image(생략 -> 오류발생...)
 
@@ -78,15 +92,27 @@ $ npm install --save-dev gulp-autoprefixer
 ~~~
 
 ## gulp-csso
+* css파일을 최소화해줌.
+* css는 띄어쓰기당 1byte를 차지. 간격을 최소화 시켜줘야 브라우저에서 빨리 가동
 ~~~
 $ npm install gulp-csso --save-dev
 ~~~
 
 ## gulp-sourcemaps
+* css의 전처리기인 sass를 컴파일하는 gulp-sass와 sass 파일을 역추적
+~~~
+ $ npm i gulp-sass gulp-sourcemaps --save--dev
+~~~
 
 ## gulp-bro
+~~~
+$ npm install --save-dev gulp-bro
+~~~
 
 ## gulp-uglifyify
+~~~
+npm install uglifyify
+~~~
 
 
 ## 기타
