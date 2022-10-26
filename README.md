@@ -61,12 +61,13 @@ package.json파일 안에 하단 서식 작성 필요
 $ npm install gulp-pug -D
 ~~~
 
-## delete module 설치 (생략 -> 오류발생...)
+## gulp delete module 설치 (생략 -> 오류발생...)
 ~~~
 $ npm install ---save del
 ~~~
 
 ## gulp webserver 설치
+* 진행중인 프로젝트의 웹 페이지를 바로 띄워줌
 ~~~
 $ npm install --save-dev gulp-webserver
 ~~~
@@ -111,7 +112,7 @@ $ npm install --save-dev gulp-bro
 
 ## gulp-uglifyify
 ~~~
-npm install uglifyify
+$ npm install uglifyify
 ~~~
 
 
