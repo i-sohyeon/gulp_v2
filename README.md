@@ -115,6 +115,11 @@ $ npm install --save-dev gulp-bro
 $ npm install uglifyify
 ~~~
 
+## gulp-typescript
+~~~
+$ npm install typescript gulp gulp-typescript -D
+~~~
+
 
 ## 기타
 * git commit 할 때, $ git add . 에러 발생 시
