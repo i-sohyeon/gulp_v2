@@ -10,7 +10,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import ts from "gulp-typescript";
 // const ts = require("gulp-typescript");
 
-const tsProject = ts.createProject("tsconfig.json");
+// const tsProject = ts.createProject("tsconfig.json");
 
 const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
@@ -19,7 +19,11 @@ const autoprefixer = require('gulp-autoprefixer');
 const routes = {
   pug: {
     watch: "src/**/*.pug",
-    src: "src/*.pug",
+    src: ([
+      "src/*.pug",
+      "src/**/*.pug",
+      "src/**/**/*.pug",
+    ]),
     dest: "build/"
   },
   img: {
@@ -36,11 +40,11 @@ const routes = {
     src: "src/js/main.js",
     dest: "build/js"
   },
-  typescript: {
-    watch: "src/ts/**/*.ts",
-    src: "src/ts/index.ts",
-    dest: 'build/js',
-  },
+  // typescript: {
+  //   watch: "src/ts/**/*.ts",
+  //   src: "src/ts/index.ts",
+  //   dest: 'build/js',
+  // },
 };
 
 const pug = () =>
@@ -70,7 +74,11 @@ const styles = () =>
 const webserver = () =>
    gulp
     .src("build")
-    .pipe(ws({livereload: true, open: true}));
+    .pipe(ws({
+      port : "7000",
+      livereload: true,
+      open: true,
+    }));
 
 const js = () => 
   gulp
@@ -83,16 +91,13 @@ const js = () =>
     }))
     .pipe(gulp.dest(routes.js.dest));
 
-const typescript = () =>
-  gulp
-
 
 const watch = () => {
   gulp.watch(routes.pug.watch, pug);
   // gulp.watch(routes.img.src, img);
   gulp.watch(routes.scss.watch, styles);
   gulp.watch(routes.js.watch, js);
-  gulp.watch(routes.ts.watch, typescript);
+  // gulp.watch(routes.ts.watch, typescript);
 };
 
 //오류 생략
