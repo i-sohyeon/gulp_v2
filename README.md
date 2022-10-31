@@ -123,4 +123,6 @@ $ npm install typescript gulp gulp-typescript -D
 
 ## 기타
 * git commit 할 때, $ git add . 에러 발생 시
-  * git config --global core.autocrlf true
+~~~
+$ git config --global core.autocrlf true
+~~~
