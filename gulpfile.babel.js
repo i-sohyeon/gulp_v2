@@ -10,6 +10,8 @@ import sourcemaps from 'gulp-sourcemaps';
 import ts from "gulp-typescript";
 const tsProject = ts.createProject("tsconfig.json");
 
+import ghPages from "gulp-gh-pages";
+
 const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 
@@ -108,6 +110,10 @@ const watch = () => {
   gulp.watch(routes.js.watch, js);
 };
 
+const ghDeploy  = () =>
+  gulp.src("build/**/*")
+  .pipe(ghPages());
+
 //오류 생략
 // const img = () => 
 //   gulp.src(routes.img.src)
@@ -115,7 +121,9 @@ const watch = () => {
 //   .pipe(gulp.dest(routes.img.dest));
 
 const assets = gulp.series([pug, styles, js, typescript]);
-const postDev = gulp.parallel([webserver, watch]);
+const live = gulp.parallel([webserver, watch]);
 //parallel 두가지 task를 병행할 수 있음
 
-export const dev = gulp.series([assets, postDev]);
+export const build = gulp.series([assets]);
+export const dev = gulp.series([build, live]);
+export const deploy = gulp.series([build, ghDeploy]);

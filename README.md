@@ -120,6 +120,15 @@ $ npm install uglifyify
 $ npm install typescript gulp gulp-typescript -D
 ~~~
 
+## gulp-ghpage
+* gulp github 띄우기
+~~~
+$ npm install --save-dev gulp-gh-pages
+~~~
+
+* gh-page deploy 오류발생
+** node_modules > gulp-gh-pages > gift 제거 후 `$ npm install gift`로 새로 다운 받은 버전으로 폴더 바꾸기
+
 
 ## 기타
 * git commit 할 때, $ git add . 에러 발생 시

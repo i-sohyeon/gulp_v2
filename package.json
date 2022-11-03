@@ -14,12 +14,13 @@
   "license": "ISC",
   "script": {
     "dev": "gulp dev",
-    "build": "gulp build"
+    "build": "gulp build",
+    "deploy": "gulp deploy"
   },
   "bugs": {
-    "url": "https://github.com/isohyeon/gulp_v2/issues"
+    "url": "https://github.com/i-sohyeon/gulp_v2/issues"
   },
-  "homepage": "https://github.com/isohyeon/gulp_v2#readme",
+  "homepage": "https://github.com/i-sohyeon/gulp_v2#readme",
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/preset-env": "^7.19.4",
@@ -30,12 +31,14 @@
     "gulp-autoprefixer": "^8.0.0",
     "gulp-bro": "^2.0.0",
     "gulp-csso": "^4.0.1",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-sass": "^5.1.0",
     "gulp-webserver": "^0.9.1",
     "sass": "^1.55.0"
   },
   "dependencies": {
     "del": "^7.0.0",
+    "gift": "^0.10.2",
     "gulp-browserify": "^0.5.1",
     "gulp-pug": "^5.0.0",
     "gulp-sourcemaps": "^3.0.0",
