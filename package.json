@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/i-sohyeon/gulp_v2.git"
+    "url": "git+https://github.com/isohyeon/gulp_v2.git"
   },
   "author": "",
   "license": "ISC",
@@ -18,9 +18,9 @@
     "deploy": "gulp deploy"
   },
   "bugs": {
-    "url": "https://github.com/i-sohyeon/gulp_v2/issues"
+    "url": "https://github.com/isohyeon/gulp_v2/issues"
   },
-  "homepage": "https://github.com/i-sohyeon/gulp_v2#readme",
+  "homepage": "https://github.com/isohyeon/gulp_v2#readme",
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/preset-env": "^7.19.4",
